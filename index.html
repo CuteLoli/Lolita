@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>年齡確認網站</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    #ageModal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    #ageModalContent {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      text-align: center;
+      max-width: 300px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .yes {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .no {
+      background-color: #f44336;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div id="ageModal">
+    <div id="ageModalContent">
+      <h2>請確認您的年齡</h2>
+      <p>您是否已滿 18 歲？</p>
+      <button class="yes" onclick="confirmAge(true)">是</button>
+      <button class="no" onclick="confirmAge(false)">否</button>
+    </div>
+  </div>
+
+  <div id="mainContent" style="display:none; padding: 20px;">
+    <h1>歡迎來到我的網站！</h1>
+    <p>這是受年齡限制的內容。</p>
+  </div>
+
+  <script>
+    function confirmAge(isAdult) {
+      if (isAdult) {
+        document.getElementById("ageModal").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+      } else {
+        alert("您未滿 18 歲，將被導向其他網站。");
+        window.location.href = "https://www.google.com"; // 可自訂跳轉頁面
+      }
+    }
+  </script>
+</body>
+</html>
